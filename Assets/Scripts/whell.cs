@@ -44,12 +44,6 @@ public class whell : MonoBehaviour
         angleOfOneObject = circle / 8;
         SetPositionData();
     }
-
-    private void Update()
-    {
-        
-    }
-
     IEnumerator RotateWheel()
     {
         float startAngle = transform.eulerAngles.z;
@@ -141,12 +135,19 @@ public class whell : MonoBehaviour
         if (levelCount % 5 == 0 && levelCount != 0)
         {
             Debug.Log("risk-free silver spin without bomb.");
+	    levelText.color = Color.gray;
             exitButton.SetActive(true);
         }
         else if (levelCount % 30 == 0 && levelCount != 0)
         {
             Debug.Log("risk-free golden spin with special rewards and without bomb.");
-            exitButton.SetActive(true);
+            levelText.color = Color.yellow;
+	    exitButton.SetActive(true);
+        }
+	else
+        {
+            levelText.color = Color.white;
+            exitButton.SetActive(false);
         }
     }
 
